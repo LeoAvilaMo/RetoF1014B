@@ -1,14 +1,28 @@
 % Primera entrega
 
-%Definiendo Variables constantes
 
+%Definiendo Variables constantes
+N = 25; %Elementos de corriente
 I = 10; %Intensidad de corriente eléctrica (Amperios)
 miu = (4*pi) * 10^-7; %Constante de permeabilidad magnética
 
 %Definiendo el espacio del campo 
 spacex = -15:0.1:15;
 spacey = -15:0.1:15;
-[X,Y] = meshgrid(spacex,spacey);
+spacez = -15:0.1:15;
+[X,Y,Z] = meshgrid(spacex,spacey,spacez);
+d_theta = (2*pi)/N;
+theta = 0:d_theta:(2*pi);
+
+%un ciclo for por cada punto que este anidado con otro ciclo for por cada
+%carga
+for i = 1:length(theta)
+    for j = X
+
+    end
+
+end
+
 
 % definir los 3 vectores con los que se obtendrá la magnitud
 % campo_Bx= (miu*I/4*pi) *((dy[i]*rz[i])/ri[i]^3) i
