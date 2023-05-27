@@ -1,22 +1,43 @@
 % Primera entrega
 
 %Definiendo Variables constantes
-N = 25; %Elementos de corriente
+N = 40; %Número de elementos de corriente
 I = 10; %Intensidad de corriente eléctrica (Amperios)
 miu = (4*pi) * 10^-7; %Constante de permeabilidad magnética
 radio = 2;
 
 %Definiendo el espacio del campo 
-spacex = -15:0.1:15;
-spacey = -15:0.1:15;
-spacez = -15:0.1:15;
+spacex = -1:0.1:1;
+spacey = -1:0.1:1;
+spacez = -1:0.1:1;
 [X,Y,Z] = meshgrid(spacex,spacey,spacez);
 d_theta = (2*pi)/N;
+circunferencia = 2*pi*radio;
+d_cir =  0:d_theta:circunferencia;
 theta = 0:d_theta:(2*pi);
 centro_aro = [0,0,0];
 %campo_Bx;
 %campo_By;
 %campo_Bz;
+
+%un ciclo for por cada punto que este anidado con otro ciclo for por cada
+%elemento de corriente
+for i = 1:length(theta) %necesitamos un vector de posición para el aro
+    R = sqrt(((X).^2+(Y).^2+(Z).^2));
+    ds = radio*theta(i);
+    radio_dy = (ds*cos((theta(i)))); %radio es ri'
+    radio_dx = -(ds.*sin((theta(i))));
+    ri_x = X - radio_dx;
+    ri_y = Y - radio_dy;
+    ri_z = Z;
+    ri = sqrt((ri_x.^2)+(ri_y.^2)+(ri_z.^2));
+    campo_Bx= (miu*I/4*pi) *((radio_dy.*ri_z)/ri^3);
+    campo_By= -(miu*I/4*pi) *((radio_dx.*ri_z)/ri^3);
+    campo_Bz= -(miu*I/4*pi) *((dx.*ri_x - dy.*ri_x)/ri^3);
+    vecBX(end+1) = campo_Bx;
+    vecBY(end+1) = campo_Bx;
+    vecBZ(end+1) = campo_B<;
+end
 
 %Graficamos el aro
 x = radio * cos(theta);
@@ -25,25 +46,8 @@ z = zeros(size(theta));
 % Graficar la circunferencia en 3D
 figure;
 plot3(x, y, z, 'b', 'LineWidth', 2);
-
-%un ciclo for por cada punto que este anidado con otro ciclo for por cada
-%elemento de corriente
-for i = 1:length(theta)
-    for x = X
-        for y = Y
-            for z = Z
-                R = sqrt(((x-centro_aro(1)).^2+(y-centro_aro(2)).^2+(z-centro_aro(3)).^2));
-                %ri1= sqrt((theta))
-
-            end
-
-        end
-
-    end
-
-end
-
-
+hold on 
+quiver3(X,Y,Z,)
 % definir los 3 vectores con los que se obtendrá la magnitud
 % campo_Bx= (miu*I/4*pi) *((dy[i]*rz[i])/ri[i]^3) i
 % campo_By= -(miu*I/4*pi) *((dx[i]*rz[i])/ri[i]^3) j
