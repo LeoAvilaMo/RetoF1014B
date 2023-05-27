@@ -1,10 +1,10 @@
 % Primera entrega
 
-
 %Definiendo Variables constantes
 N = 25; %Elementos de corriente
 I = 10; %Intensidad de corriente eléctrica (Amperios)
 miu = (4*pi) * 10^-7; %Constante de permeabilidad magnética
+radio = 2;
 
 %Definiendo el espacio del campo 
 spacex = -15:0.1:15;
@@ -13,11 +13,31 @@ spacez = -15:0.1:15;
 [X,Y,Z] = meshgrid(spacex,spacey,spacez);
 d_theta = (2*pi)/N;
 theta = 0:d_theta:(2*pi);
+centro_aro = [0,0,0];
+%campo_Bx;
+%campo_By;
+%campo_Bz;
+
+%Graficamos el aro
+x = radio * cos(theta);
+y = radio * sin(theta);
+z = zeros(size(theta));
+% Graficar la circunferencia en 3D
+figure;
+plot3(x, y, z, 'b', 'LineWidth', 2);
 
 %un ciclo for por cada punto que este anidado con otro ciclo for por cada
-%carga
+%elemento de corriente
 for i = 1:length(theta)
-    for j = X
+    for x = X
+        for y = Y
+            for z = Z
+                R = sqrt(((x-centro_aro(1)).^2+(y-centro_aro(2)).^2+(z-centro_aro(3)).^2));
+                %ri1= sqrt((theta))
+
+            end
+
+        end
 
     end
 
