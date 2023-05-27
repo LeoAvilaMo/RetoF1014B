@@ -7,9 +7,9 @@ miu = (4*pi) * 10^-7; %Constante de permeabilidad magnética
 radio = 2;
 
 %Definiendo el espacio del campo 
-spacex = -1:0.1:1;
-spacey = -1:0.1:1;
-spacez = -1:0.1:1;
+spacex = -10:2:10;
+spacey = -10:2:10;
+spacez = -10:2:10;
 [X,Y,Z] = meshgrid(spacex,spacey,spacez);
 d_theta = (2*pi)/N;
 circunferencia = 2*pi*radio;
@@ -20,9 +20,6 @@ centro_aro = [0,0,0];
 %campo_By;
 %campo_Bz;
 
-vecBX = [];
-vecBY = [];
-vecBZ= [];
 %un ciclo for por cada punto que este anidado con otro ciclo for por cada
 %elemento de corriente
 for i = 1:length(theta) %necesitamos un vector de posición para el aro
@@ -34,10 +31,11 @@ for i = 1:length(theta) %necesitamos un vector de posición para el aro
     ri_y = Y - radio_dy;
     ri_z = Z;
     ri = sqrt((ri_x.^2)+(ri_y.^2)+(ri_z.^2));
+end
+
     campo_Bx= (miu*I/4*pi) *((radio_dy.*ri_z)./ri.^3);
     campo_By= -(miu*I/4*pi) *((radio_dx.*ri_z)./ri.^3);
     campo_Bz= -(miu*I/4*pi) *((radio_dx.*ri_x - radio_dy.*ri_x)./ri.^3);
-end
 figure;
 %Graficamos el aro
 x = radio * cos(theta);
