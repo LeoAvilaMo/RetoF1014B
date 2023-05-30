@@ -50,15 +50,3 @@ Bx1 = squeeze(campo_Bx_total(:,y2,:));
 Bz1 = squeeze(campo_Bz_total(:,y2,:));
 figure;
 streamslice(spacex,spacez,Bx1',Bz1',2);
-
-
-%Graficamos el aro
-x = radio * cos(theta);
-y = radio * sin(theta);
-z = zeros(size(theta));
-% Graficar la circunferencia en 3D
-figure;
-plot3(x, y, z, 'b', 'LineWidth', 2);
-hold on 
-%se gráfican los campos eléctricos
-quiver3(X,Y,Z, campo_Bx_total, campo_By_total, campo_Bz_total)
