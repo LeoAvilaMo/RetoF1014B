@@ -64,5 +64,5 @@ figure(3);
 plot(t_vals,a_vals);
 xlabel('Tiempo');
 ylabel('Aceleración');
-title('Gráfica de velocidad con respecto al tiempo');
+title('Gráfica de aceleración con respecto al tiempo');
 
