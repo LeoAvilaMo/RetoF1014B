@@ -56,12 +56,13 @@ xlabel('Tiempo');
 ylabel('Posición Z');
 title('Gráfica de posición con respecto al tiempo');
 figure(2);
+plot(t_vals,v_vals);
 xlabel('Tiempo');
 ylabel('Velocidad');
 title('Gráfica de velocidad con respecto al tiempo');
-plot(t_vals,v_vals);
 figure(3);
+plot(t_vals,a_vals);
 xlabel('Tiempo');
 ylabel('Aceleración');
 title('Gráfica de velocidad con respecto al tiempo');
-plot(t_vals,a_vals);
+
