@@ -48,3 +48,18 @@ hold on
 %se gráfican los campos
 quiver3(X,Y,Z, Bx_total, By_total, Bz_total,"filled")
 hold off
+
+figure;
+i= [-radio radio];
+j = [0 0];
+col =[204, 41, 54]/255;
+lx = length(spacex);
+origen = round((lx/2));
+By1 = squeeze(By_total(:,origen,:));
+Bz1 = squeeze(Bz_total(:,origen,:));
+plot(i,j,'Color', col,'LineWidth',2);
+streamslice(spacex,spacez,By1',Bz1');
+legend("aro en yz")
+title("Campo magnético de un anillo",'FontSize',11)
+
+
